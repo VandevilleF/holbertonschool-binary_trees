@@ -13,7 +13,7 @@ binary_tree_t *binary_tree_node(binary_tree_t *parent, int value)
     if (new_node == NULL)
     {
         fprintf(stderr, "Malloc failed");
-        exit (-1);
+        return (NULL);
     }
     /*Set value of node*/
     new_node->n = value;
@@ -23,6 +23,5 @@ binary_tree_t *binary_tree_node(binary_tree_t *parent, int value)
     new_node->left = NULL;
     new_node->right = NULL;
 
-    free(new_node);
     return (new_node);
 }
