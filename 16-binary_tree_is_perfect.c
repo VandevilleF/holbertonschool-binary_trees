@@ -10,7 +10,7 @@
 
 int binary_tree_is_perfect(const binary_tree_t *tree)
 {
-	int height_left, height_right, sum;
+	int height_left, height_right;
 
 	if (tree == NULL)
 		return (0);
@@ -18,15 +18,12 @@ int binary_tree_is_perfect(const binary_tree_t *tree)
 	height_left = binary_tree_height(tree->left);
 	height_right = binary_tree_height(tree->right);
 
-	sum = height_left - height_right;
-	if (sum == 0)
-		return (1);
-
 	if (height_left != height_right)
 		return (0);
 
 	if (tree->left == NULL && tree->right == NULL)
-		return (0);
+		return (1);
 
-	return (sum);
+	return (binary_tree_is_perfect(tree->left)
+			&& binary_tree_is_perfect(tree->right));
 }
